@@ -1,6 +1,7 @@
 // Task 1: Set up API and App Structure
 
 import React, { useState, useEffect } from "react";
+import Gallery from "./Components/Gallery";
 
 const App = () => {
   const [tours, setTours] = useState([]);
@@ -28,6 +29,10 @@ const App = () => {
     fetchTours();
   }, []);
 
+  const removeTour = (id) => {
+    setTours(tours.filter((tour) => tour.id !== id));
+  };
+
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -39,11 +44,7 @@ const App = () => {
   return (
     <div>
       <h1>Tours</h1>
-      <ul>
-        {tours.map((tour) => (
-          <li key={tour.id}>{tour.name}</li>
-        ))}
-      </ul>
+      <Gallery tours={tours} onRemoveTour={removeTour} />
     </div>
   );
 };
