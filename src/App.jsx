@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Gallery from "./Components/Gallery";
+import "./App.css"; // Import CSS for styling
 
 const App = () => {
   // State to store the list of tours
